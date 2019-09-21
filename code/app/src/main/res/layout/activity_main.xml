@@ -8,76 +8,60 @@
 
     <Button
         android:id="@+id/delete_ride"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="Delete ride"
+        android:text="@string/delete_b"
+        app:layout_constraintBottom_toBottomOf="@+id/add_new"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_edit" />
+        app:layout_constraintStart_toEndOf="@+id/view_edit"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <Button
         android:id="@+id/see_total"
         android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:text="See total distance"
-        app:layout_constraintEnd_toStartOf="@+id/view_edit"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <Button
-        android:id="@+id/ride_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Show list of rides"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/seetotal_b"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/see_total" />
+        app:layout_constraintTop_toBottomOf="@+id/add_new" />
 
     <Button
         android:id="@+id/add_new"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Add a new ride"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/addnew_b"
+        app:layout_constraintEnd_toStartOf="@+id/view_edit"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <Button
         android:id="@+id/view_edit"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="View/edit ride"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_new" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/viewedit_b"
+        app:layout_constraintBottom_toBottomOf="@+id/add_new"
+        app:layout_constraintEnd_toStartOf="@+id/delete_ride"
+        app:layout_constraintStart_toEndOf="@+id/add_new"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
         android:id="@+id/logo"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="RIDEBOOK"
+        android:text="@string/logo_t"
         android:textAlignment="center"
         android:textSize="16pt"
         app:layout_constraintEnd_toEndOf="parent"
