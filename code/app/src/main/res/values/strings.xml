@@ -5,4 +5,15 @@
     <string name="delete_b">Delete Ride</string>
     <string name="logo_t">RideBook</string>
     <string name="seetotal_b">View Total Distance</string>
+    
+    <string-array name="rides_array">
+        <item>apple</item>
+        <item>orange</item>
+        <item>banana</item>
+        <item>strawberry</item>
+        <item>pear</item>
+        <item>peach</item>
+        <item>kiwi</item>
+        <item>plum</item>
+    </string-array>
 </resources>
