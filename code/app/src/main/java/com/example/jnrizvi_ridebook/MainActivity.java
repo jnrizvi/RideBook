@@ -5,18 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    ListView RidesListView;
-
+    ListView ridesListView;
+    TextView textView;
+    String[] listOfStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ridesListView = (ListView) findViewById(R.id.ride_list);
+        textView = (TextView) findViewById(R.id.textView);
+        listOfStrings = getResources().getStringArray(R.array.rides_array);
+        final ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this, R.layout.list, listOfStrings);
+        ridesListView.setAdapter(myAdapter);
+
+//        ridesListView.setOnClickListener(new AdapterView().getOnItemClickListener() {});
 
         Button addNew_button = (Button) findViewById(R.id.add_new);
         Button seeTotal_button = (Button) findViewById(R.id.see_total);
