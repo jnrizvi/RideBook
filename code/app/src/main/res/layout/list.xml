@@ -25,6 +25,7 @@
         android:id="@+id/time_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="end"
         android:padding="10dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/distance_text"
@@ -35,8 +36,9 @@
 
     <TextView
         android:id="@+id/date_text"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="10dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +51,7 @@
         android:id="@+id/distance_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="end"
         android:padding="10dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/date_text"
