@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +34,13 @@ public class CustomRideList extends ArrayAdapter<Ride> {
 
         Ride ride = rides.get(position);
 
-        // STUFF HERE!!!
+        TextView distance_view = view.findViewById(R.id.distance_text);
+        TextView time_view = view.findViewById(R.id.time_text);
+        TextView date_view = view.findViewById(R.id.date_text);
+
+        distance_view.setText(ride.getDistance());
+        time_view.setText(ride.getRideTime());
+        date_view.setText(ride.getRideDate());
 
         return view;
     }

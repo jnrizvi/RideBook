@@ -1,17 +1,21 @@
 package com.example.jnrizvi_ridebook;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class Ride {
-    private Date date;
-    private Time time;
-    private float distance;
-    private float avg_speed;
-    private int avg_cadence;
+    private String date;
+    private String time;
+    private String distance;
+    private String avg_speed;
+    private String avg_cadence;
     private String comment;
 
-    public Ride (Date date, Time time, float distance, float avg_speed, int avg_cadence, String comment) {
+    // shorter constructor for testing purposes
+    public Ride (String date, String time, String distance) {
+        this.date = date;
+        this.time = time;
+        this.distance = distance;
+    }
+
+    public Ride (String date, String time, String distance, String avg_speed, String avg_cadence, String comment) {
         this.date = date;
         this.time = time;
         this.distance = distance;
@@ -20,15 +24,15 @@ public class Ride {
         this.comment = comment;
     }
 
-    Date getRideDate() { return this.date; }
+    String getRideDate() { return this.date; }
 
-    Time getRideTime() { return this.time; }
+    String getRideTime() { return this.time; }
 
-    float getDistance() { return this.distance; }
+    String getDistance() { return this.distance; }
 
-    float getAvg_speed() { return this.avg_speed; }
+    String getAvg_speed() { return this.avg_speed; }
 
-    float getAvg_cadence() { return this.avg_cadence; }
+    String getAvg_cadence() { return this.avg_cadence; }
 
     String getRideComment() { return this.comment; }
 
