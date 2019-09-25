@@ -41,24 +41,24 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        Button addNew_button = (Button) findViewById(R.id.add_new);
-        Button seeTotal_button = (Button) findViewById(R.id.see_total);
-
-        addNew_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
-                startActivity(intent);
-            }
-        });
-
-        seeTotal_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewTotalDistance.class);
-                startActivity(intent);
-            }
-        });
+//        Button addNew_button = (Button) findViewById(R.id.add_new);
+//        Button seeTotal_button = (Button) findViewById(R.id.see_total);
+//
+//        addNew_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        seeTotal_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), ViewTotalDistance.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 }
