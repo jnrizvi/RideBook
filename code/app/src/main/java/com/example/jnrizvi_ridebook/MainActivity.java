@@ -3,6 +3,7 @@ package com.example.jnrizvi_ridebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,14 +15,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ModifyRideFragment.OnFragmentInteractionListener {
     ListView ridesListView;
     ArrayAdapter<Ride> rideAdapter;
     ArrayList<Ride> rideDataList;
 
     TextView textView;
 //    String[] listOfStrings;
-
+    boolean deletePressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +56,29 @@ public class MainActivity extends AppCompatActivity {
 
                 ridesListView.setSelection(i);
                 System.out.println(rideAdapter.getItem(i).getRideTime());
+                final Button delete_button = (Button) findViewById(R.id.delete_ride);
+
+                delete_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (deletePressed == false) {
+                            deletePressed = true;
+                            delete_button.setBackgroundColor(Color.parseColor("#FF0000"));
+                        }
+                        else {
+                            deletePressed = false;
+                            delete_button.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        }
+                    }
+                });
+                if (deletePressed == true) {
+                    rideAdapter.remove(rideAdapter.getItem(i));
+                }
 
                 // triggers the fragment that allows you to edit a city in the list
 //                new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
-                new ModifyRideFragment().show(getSupportFragmentManager(), "MODIFY_CITY");
-
-//                Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
-//                startActivity(intent);
+//                new ModifyRideFragment().show(getSupportFragmentManager(), "MODIFY_CITY");
+//                new ModifyRideFragment().passList(rideAdapter).show(getSupportFragmentManager(), "MODIFY_LIST");
             }
 
         });
@@ -78,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-//    @Override
-//    public void onOkPressed(Ride newRide) { rideAdapter.add(newRide); }
+    @Override
+    public void onOkPressed(Ride newRide) {
+        rideAdapter.add(newRide);
+    }
 }

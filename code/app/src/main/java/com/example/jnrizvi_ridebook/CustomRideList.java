@@ -10,9 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CustomRideList extends ArrayAdapter<Ride> {
+public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
     private ArrayList<Ride> rides;
     private Context context;
 

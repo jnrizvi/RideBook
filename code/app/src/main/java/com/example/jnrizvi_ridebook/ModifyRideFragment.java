@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -28,6 +30,15 @@ public class ModifyRideFragment extends DialogFragment {
         return fragment;
     }
 
+    static ModifyRideFragment passList(CustomRideList list) {
+        Bundle args = new Bundle();
+        args.putSerializable("list", list);
+
+        ModifyRideFragment fragment = new ModifyRideFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     public interface OnFragmentInteractionListener {
         void onOkPressed(Ride newRide);
     }
@@ -38,8 +49,8 @@ public class ModifyRideFragment extends DialogFragment {
         if (context instanceof OnFragmentInteractionListener){
             listener = (OnFragmentInteractionListener) context;
         } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -50,6 +61,15 @@ public class ModifyRideFragment extends DialogFragment {
         delete = view.findViewById(R.id.delete_button);
         view_edit = view.findViewById(R.id.viewedit_button);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = getArguments();
+                Ride rideToDelete = (Ride) bundle.getSerializable("ride");
+//                ridesListView.remove(rideToDelete);
+            }
+        });
 
         String myTag = getTag();
 
