@@ -1,6 +1,8 @@
 package com.example.jnrizvi_ridebook;
 
-public class Ride {
+import java.io.Serializable;
+
+public class Ride implements Serializable {
     private String date;
     private String time;
     private String distance;

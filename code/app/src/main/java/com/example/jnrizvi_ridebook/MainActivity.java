@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView;
 //    String[] listOfStrings;
-    int index = -1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +49,22 @@ public class MainActivity extends AppCompatActivity {
 
         ridesListView.setAdapter(rideAdapter);
 
-//        ridesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String val = ridesListView.getItemAtPosition(i).toString();
-//                index = i;
-//                ridesListView.setSelection(i);
+        ridesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ridesListView.setSelection(i);
+                System.out.println(rideAdapter.getItem(i).getRideTime());
+
+                // triggers the fragment that allows you to edit a city in the list
+//                new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
+                new ModifyRideFragment().show(getSupportFragmentManager(), "MODIFY_CITY");
+
 //                Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
 //                startActivity(intent);
-//            }
-//
-//        });
+            }
+
+        });
 
         Button addNew_button = (Button) findViewById(R.id.add_new);
 //        Button seeTotal_button = (Button) findViewById(R.id.see_total);
@@ -71,14 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//
-//        seeTotal_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), ViewTotalDistance.class);
-//                startActivity(intent);
-//            }
-//        });
 
     }
+//    @Override
+//    public void onOkPressed(Ride newRide) { rideAdapter.add(newRide); }
 }
