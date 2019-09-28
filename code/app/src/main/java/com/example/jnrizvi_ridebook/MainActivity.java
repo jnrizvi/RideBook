@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
 
         ridesListView.setAdapter(rideAdapter);
 
-        ridesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ridesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 ridesListView.setSelection(i);
                 System.out.println(rideAdapter.getItem(i).getRideTime());
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
 //
 //                new ModifyRideFragment().passList(rideDataList).show(getSupportFragmentManager(), "MODIFY_LIST");
                 rideAdapter.notifyDataSetChanged();
+                return true;
             }
 
         });
@@ -117,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
-//                String result=data.getStringExtra("result");
                 Ride newRide = (Ride) data.getSerializableExtra("newRide");
                 rideAdapter.add(newRide);
             }
