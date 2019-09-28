@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import java.util.ArrayList;
+
 public class ModifyRideFragment extends DialogFragment {
     private Button view_edit;
     private Button delete;
@@ -30,10 +32,10 @@ public class ModifyRideFragment extends DialogFragment {
         return fragment;
     }
 
-    static ModifyRideFragment passList(CustomRideList list) {
+    static ModifyRideFragment passList(ArrayList<Ride> list) {
         Bundle args = new Bundle();
         args.putSerializable("list", list);
-
+        System.out.println(list);
         ModifyRideFragment fragment = new ModifyRideFragment();
         fragment.setArguments(args);
         return fragment;
@@ -67,7 +69,10 @@ public class ModifyRideFragment extends DialogFragment {
             public void onClick(View v) {
                 Bundle bundle = getArguments();
                 Ride rideToDelete = (Ride) bundle.getSerializable("ride");
-//                ridesListView.remove(rideToDelete);
+//                ArrayList<Ride> ridesArray;
+//                ridesArray = (ArrayList<Ride>) bundle.getSerializable("list");
+//                ridesArray.remove(1);
+                ((MainActivity) getActivity()).onDelete(rideToDelete);
             }
         });
 

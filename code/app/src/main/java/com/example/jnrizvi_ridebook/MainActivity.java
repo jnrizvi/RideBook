@@ -56,31 +56,34 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
 
                 ridesListView.setSelection(i);
                 System.out.println(rideAdapter.getItem(i).getRideTime());
-                final Button delete_button = (Button) findViewById(R.id.delete_ride);
 
-                delete_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (deletePressed == false) {
-                            deletePressed = true;
-                            delete_button.setBackgroundColor(Color.parseColor("#FF0000"));
-                        }
-                        else {
-                            deletePressed = false;
-                            delete_button.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                        }
-                    }
-                });
-                if (deletePressed == true) {
-                    rideAdapter.remove(rideAdapter.getItem(i));
-                }
 
-                // triggers the fragment that allows you to edit a city in the list
-//                new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
-//                new ModifyRideFragment().show(getSupportFragmentManager(), "MODIFY_CITY");
-//                new ModifyRideFragment().passList(rideAdapter).show(getSupportFragmentManager(), "MODIFY_LIST");
+
+//                if (deletePressed == true) {
+//                    rideAdapter.remove(rideAdapter.getItem(i));
+//                }
+
+
+                new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
+//
+//                new ModifyRideFragment().passList(rideDataList).show(getSupportFragmentManager(), "MODIFY_LIST");
+                rideAdapter.notifyDataSetChanged();
             }
 
+        });
+        final Button delete_button = (Button) findViewById(R.id.delete_ride);
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (deletePressed == false) {
+                    deletePressed = true;
+                    delete_button.setBackgroundColor(Color.parseColor("#FF0000"));
+                }
+                else {
+                    deletePressed = false;
+                    delete_button.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                }
+            }
         });
 
         Button addNew_button = (Button) findViewById(R.id.add_new);
@@ -94,9 +97,20 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             }
         });
 
+
+
     }
+
+    //this one is redundant
     @Override
     public void onOkPressed(Ride newRide) {
         rideAdapter.add(newRide);
     }
+
+    public void onDelete(Ride ride) {
+        rideAdapter.remove(ride);
+    }
+//    public void onConfirmAdd(Ride newRide) {
+//        rideAdapter.add(newRide);
+//    }
 }
