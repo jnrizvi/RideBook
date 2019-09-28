@@ -13,20 +13,19 @@ import java.util.ArrayList;
 
 public class AddNewRide extends AppCompatActivity {
 
-//    static AddNewRide passList(ArrayList<Ride> list) {
-//        Bundle args = new Bundle();
-//        args.putSerializable("list", list);
-//        System.out.println(list);
-//        AddNewRide fragment = new AddNewRide();
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
     String date;
     String distance;
     String time;
+    String avg_speed;
+    String cadence;
+    String comment;
     EditText enter_date;
     EditText enter_distance;
     EditText enter_time;
+    EditText enter_avg_speed;
+    EditText enter_cadence;
+    EditText enter_comment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +35,12 @@ public class AddNewRide extends AppCompatActivity {
         enter_distance = (EditText) findViewById(R.id.distance_field);
         enter_time = (EditText) findViewById(R.id.time_field);
 
+        enter_avg_speed = (EditText) findViewById(R.id.avg_speed_field);
+        enter_cadence = (EditText) findViewById(R.id.cadence_field);
+        enter_comment = (EditText) findViewById(R.id.comment_field);
+
         Button confirm_add = (Button) findViewById(R.id.confirm_button);
+        Button cancel_add = (Button) findViewById(R.id.cancel_button);
 
         confirm_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,12 +48,23 @@ public class AddNewRide extends AppCompatActivity {
                 date = enter_date.getText().toString();
                 distance = enter_distance.getText().toString();
                 time = enter_time.getText().toString();
-                System.out.println(date);
-                Ride newRide = new Ride(date, distance, time, false);
+
+                avg_speed = enter_avg_speed.getText().toString();
+                cadence = enter_cadence.getText().toString();
+                comment = enter_comment.getText().toString();
+
+                Ride newRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
                 Intent returnIntent = getIntent();
                 returnIntent.putExtra("newRide", newRide);
                 setResult(RESULT_OK, returnIntent);
 
+                finish();
+            }
+        });
+
+        cancel_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });

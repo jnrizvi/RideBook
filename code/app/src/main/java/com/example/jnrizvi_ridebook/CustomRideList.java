@@ -38,8 +38,23 @@ public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
                 view = inflator.inflate(R.layout.expanded_list, parent, false);
                 Ride ride = rides.get(position);
 
-                TextView test = view.findViewById(R.id.test);
-                test.setText("Hello World");
+                TextView date_view = view.findViewById(R.id.date_text);
+                date_view.setText(ride.getRideDate());
+
+                TextView time_view = view.findViewById(R.id.time_text);
+                time_view.setText(ride.getRideTime());
+
+                TextView distance_view = view.findViewById(R.id.distance_text);
+                distance_view.setText(ride.getDistance());
+
+                TextView avg_speed_view = view.findViewById(R.id.avg_speed_text);
+                avg_speed_view.setText(ride.getAvg_speed());
+
+                TextView cadence_view = view.findViewById(R.id.cadence_text);
+                cadence_view.setText(ride.getAvg_cadence());
+
+                TextView comment_view = view.findViewById(R.id.comment_text);
+                comment_view.setText(ride.getRideComment());
 //                System.out.println("jksdfksehu");
             }
             else if (rides.get(position).getExpandStatus() == false) {
