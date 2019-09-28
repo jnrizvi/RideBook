@@ -17,7 +17,6 @@
         android:text="Hello World"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/time_text"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -31,7 +30,7 @@
         android:padding="10dp"
         android:text="Hello World"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/distance_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/date_text"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -46,8 +45,8 @@
         android:text="Hello World"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/time_text"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_text">
 
     </TextView>
 
@@ -59,10 +58,9 @@
         android:padding="10dp"
         android:text="Hello World"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/cadence_text"
         app:layout_constraintEnd_toStartOf="@+id/cadence_text"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance_text">
 
     </TextView>
 
@@ -74,9 +72,9 @@
         android:padding="10dp"
         android:text="Hello World"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/comment_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/avg_speed_text"
-        app:layout_constraintTop_toBottomOf="@+id/time_text">
+        app:layout_constraintTop_toBottomOf="@+id/distance_text">
 
     </TextView>
 
@@ -88,9 +86,9 @@
         android:padding="10dp"
         android:text="Hello World"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/cadence_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cadence_text">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avg_speed_text">
 
     </TextView>
 
