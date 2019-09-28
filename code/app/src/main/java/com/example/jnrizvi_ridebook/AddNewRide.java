@@ -45,7 +45,7 @@ public class AddNewRide extends AppCompatActivity {
                 distance = enter_distance.getText().toString();
                 time = enter_time.getText().toString();
                 System.out.println(date);
-                Ride newRide = new Ride(date, distance, time);
+                Ride newRide = new Ride(date, distance, time, false);
                 Intent returnIntent = getIntent();
                 returnIntent.putExtra("newRide", newRide);
                 setResult(RESULT_OK, returnIntent);

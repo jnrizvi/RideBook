@@ -16,11 +16,12 @@ import java.util.ArrayList;
 public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
     private ArrayList<Ride> rides;
     private Context context;
-
-    public CustomRideList(Context context, ArrayList<Ride> rides) {
+    private boolean expanded;
+    public CustomRideList(Context context, ArrayList<Ride> rides, boolean expanded) {
         super(context, 0, rides);
         this.context = context;
         this.rides = rides;
+        this.expanded = expanded;
     }
 
     @NonNull
@@ -28,20 +29,38 @@ public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 //        return super.getView(position, convertView, parent);
         View view = convertView;
+        LayoutInflater inflator = ((android.app.Activity) this.context).getLayoutInflater();
 
-        if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.list, parent, false);
-        }
 
-        Ride ride = rides.get(position);
 
-        TextView distance_view = view.findViewById(R.id.distance_text);
-        TextView time_view = view.findViewById(R.id.time_text);
-        TextView date_view = view.findViewById(R.id.date_text);
+            if (rides.get(position).getExpandStatus() == true) {
+//                view = LayoutInflater.from(context).inflate(R.layout.expanded_list, parent, false);
+                view = inflator.inflate(R.layout.expanded_list, parent, false);
+                Ride ride = rides.get(position);
 
-        distance_view.setText(ride.getDistance());
-        time_view.setText(ride.getRideTime());
-        date_view.setText(ride.getRideDate());
+                TextView test = view.findViewById(R.id.test);
+                test.setText("Hello World");
+//                System.out.println("jksdfksehu");
+            }
+            else if (rides.get(position).getExpandStatus() == false) {
+//                view = LayoutInflater.from(context).inflate(R.layout.list, parent, false);
+                view = inflator.inflate(R.layout.list, parent, false);
+
+                Ride ride = rides.get(position);
+
+                TextView distance_view = view.findViewById(R.id.distance_text);
+                TextView time_view = view.findViewById(R.id.time_text);
+                TextView date_view = view.findViewById(R.id.date_text);
+
+                distance_view.setText(ride.getDistance());
+                time_view.setText(ride.getRideTime());
+                date_view.setText(ride.getRideDate());
+            }
+
+
+
+
+
 
         return view;
     }
