@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     public void onDelete(Ride ride) {
         rideAdapter.remove(ride);
     }
-//    public void onConfirmAdd(Ride newRide) {
-//        rideAdapter.add(newRide);
-//    }
+
+    public void onConfirmAdd(Ride newRide) {
+        rideAdapter.add(newRide);
+    }
 }

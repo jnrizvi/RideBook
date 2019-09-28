@@ -22,7 +22,7 @@ public class ModifyRideFragment extends DialogFragment {
     private Button view_edit;
     private Button delete;
     private OnFragmentInteractionListener listener;
-    
+
     static ModifyRideFragment newInstance(Ride ride) {
         Bundle args = new Bundle();
         args.putSerializable("ride", ride);
@@ -60,32 +60,40 @@ public class ModifyRideFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.modify_ride_fragment_layout, null);
-        delete = view.findViewById(R.id.delete_button);
+//        delete = view.findViewById(R.id.delete_button);
         view_edit = view.findViewById(R.id.viewedit_button);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = getArguments();
-                Ride rideToDelete = (Ride) bundle.getSerializable("ride");
-//                ArrayList<Ride> ridesArray;
-//                ridesArray = (ArrayList<Ride>) bundle.getSerializable("list");
-//                ridesArray.remove(1);
-                ((MainActivity) getActivity()).onDelete(rideToDelete);
-            }
-        });
+//        delete.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Bundle bundle = getArguments();
+//                Ride rideToDelete = (Ride) bundle.getSerializable("ride");
+////                ArrayList<Ride> ridesArray;
+////                ridesArray = (ArrayList<Ride>) bundle.getSerializable("list");
+////                ridesArray.remove(1);
+//                ((MainActivity) getActivity()).onDelete(rideToDelete);
+//
+//                finish();
+//            }
+//        });
 
-        String myTag = getTag();
 
 
-        System.out.println(myTag);
         return builder
-                .setView(view)
-                .setTitle("Modify Ride")
-                .setNegativeButton("Go Back", null)
-                .create();
-
+                    .setView(view)
+                    .setTitle("Modify Ride")
+                    .setNegativeButton("Cancel", null)
+                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Bundle bundle = getArguments();
+                            Ride rideToDelete = (Ride) bundle.getSerializable("ride");
+                            ((MainActivity) getActivity()).onDelete(rideToDelete);
+                        }
+                    })
+                    .create();
 
 
     }

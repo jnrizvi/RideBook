@@ -20,6 +20,7 @@ public class AddNewRide extends AppCompatActivity {
         String distance = enter_distance.getText().toString();
         String time = enter_time.getText().toString();
 
+//        ((MainActivity) getActivity()).onConfirmAdd();
 
     }
 }
