@@ -2,6 +2,7 @@ package com.example.jnrizvi_ridebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -77,11 +78,11 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             public void onClick(View v) {
                 if (deletePressed == false) {
                     deletePressed = true;
-                    delete_button.setBackgroundColor(Color.parseColor("#FF0000"));
+                    delete_button.setTextColor(Color.parseColor("#FF0000"));
                 }
                 else {
                     deletePressed = false;
-                    delete_button.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    delete_button.setTextColor(Color.parseColor("#FFFFFF"));
                 }
             }
         });
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -109,6 +110,18 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
 
     public void onDelete(Ride ride) {
         rideAdapter.remove(ride);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+//                String result=data.getStringExtra("result");
+                Ride newRide = (Ride) data.getSerializableExtra("newRide");
+                rideAdapter.add(newRide);
+            }
+        }
     }
 
     public void onConfirmAdd(Ride newRide) {
