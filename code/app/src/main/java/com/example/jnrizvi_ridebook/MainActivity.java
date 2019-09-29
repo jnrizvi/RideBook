@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     ArrayList<Ride> rideDataList;
 
     int editPosition;
-
+    TextView seeTotal_button;
+    float total_distance = 0;
     boolean deletePressed;
     public boolean expanded;
     @Override
@@ -54,11 +55,8 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
                 } else if (rideAdapter.getItem(position).getExpandStatus() == true) {
                     rideAdapter.getItem(position).setExpanded(false);
                 }
-
-//                expanded = true;
                 rideAdapter.notifyDataSetChanged();
             }
-
         });
 
         ridesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -70,23 +68,30 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
                 editPosition = i;
                 new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
 //                new ModifyRideFragment().passList(rideDataList).show(getSupportFragmentManager(), "MODIFY_LIST");
+
+                seeTotal_button = findViewById(R.id.see_total);
+                total_distance = 0;
+                for (int j = 0; j < rideAdapter.getCount(); j++) {
+                    total_distance += Float.parseFloat(rideAdapter.getItem(j).getDistance());
+                }
+                seeTotal_button.setText("Total Distance: " + Float.toString(total_distance)+" km");
+
                 rideAdapter.notifyDataSetChanged();
                 return true;
             }
         });
 
-
-
         Button addNew_button = (Button) findViewById(R.id.add_new);
-//        Button seeTotal_button = (Button) findViewById(R.id.see_total);
 
         addNew_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
-                startActivityForResult(intent, 2);
+                startActivityForResult(intent, 1);
             }
         });
+
+
 
 
 
@@ -96,10 +101,12 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     @Override
     public void onOkPressed(Ride newRide) {
         rideAdapter.add(newRide);
+        // Toast here as well
     }
 
     public void onDelete(Ride ride) {
         rideAdapter.remove(ride);
+        // add a Toast if you have time
     }
 
     @Override

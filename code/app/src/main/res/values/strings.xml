@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">jnrizvi-RideBook</string>
     <string name="viewedit_b">Edit This Ride</string>
-    <string name="addnew_b">Add a New Ride</string>
+    <string name="addnew_b">+ New Ride</string>
     <string name="delete_b">Delete Ride</string>
     <string name="logo_t">RideBook</string>
     <string name="seetotal_b">View Total Distance</string>
