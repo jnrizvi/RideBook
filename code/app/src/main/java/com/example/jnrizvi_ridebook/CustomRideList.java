@@ -45,13 +45,13 @@ public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
                 time_view.setText(ride.getRideTime());
 
                 TextView distance_view = view.findViewById(R.id.distance_text);
-                distance_view.setText(ride.getDistance());
+                distance_view.setText(ride.getDistance()+" km");
 
                 TextView avg_speed_view = view.findViewById(R.id.avg_speed_text);
-                avg_speed_view.setText(ride.getAvg_speed());
+                avg_speed_view.setText(ride.getAvg_speed()+" km/h");
 
                 TextView cadence_view = view.findViewById(R.id.cadence_text);
-                cadence_view.setText(ride.getAvg_cadence());
+                cadence_view.setText(ride.getAvg_cadence()+" rpm");
 
                 TextView comment_view = view.findViewById(R.id.comment_text);
                 comment_view.setText(ride.getRideComment());
@@ -67,7 +67,7 @@ public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
                 TextView time_view = view.findViewById(R.id.time_text);
                 TextView date_view = view.findViewById(R.id.date_text);
 
-                distance_view.setText(ride.getDistance());
+                distance_view.setText(ride.getDistance()+" km");
                 time_view.setText(ride.getRideTime());
                 date_view.setText(ride.getRideDate());
             }
