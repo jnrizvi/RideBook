@@ -44,6 +44,18 @@ public class Ride implements Serializable {
 
     boolean getExpandStatus() { return this.expanded; }
 
+    void setRideDate(String newRideDate) { this.date= newRideDate; }
+
+    void setRideTime(String newRideTime) { this.time= newRideTime; }
+
+    void setDistance(String newDistance) { this.distance= newDistance; }
+
+    void setAvg_speed(String newAvg_speed) { this.avg_speed= newAvg_speed; }
+
+    void setAvg_cadence(String newAvg_cadence) { this.avg_cadence= newAvg_cadence; }
+
+    void setRideComment(String newComment) { this.comment= newComment; }
+
     void setExpanded(boolean isExpanded) { this.expanded = isExpanded; }
 
 }

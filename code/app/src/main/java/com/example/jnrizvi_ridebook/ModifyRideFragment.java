@@ -19,7 +19,7 @@ import androidx.fragment.app.DialogFragment;
 import java.util.ArrayList;
 
 public class ModifyRideFragment extends DialogFragment {
-    private Button view_edit;
+    private Button edit_this_ride;
     private Button delete;
     private OnFragmentInteractionListener listener;
 
@@ -61,25 +61,20 @@ public class ModifyRideFragment extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.modify_ride_fragment_layout, null);
 //        delete = view.findViewById(R.id.delete_button);
-        view_edit = view.findViewById(R.id.viewedit_button);
+        edit_this_ride = view.findViewById(R.id.viewedit_button);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-//        delete.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Bundle bundle = getArguments();
-//                Ride rideToDelete = (Ride) bundle.getSerializable("ride");
-////                ArrayList<Ride> ridesArray;
-////                ridesArray = (ArrayList<Ride>) bundle.getSerializable("list");
-////                ridesArray.remove(1);
-//                ((MainActivity) getActivity()).onDelete(rideToDelete);
-//
-//                finish();
-//            }
-//        });
+        edit_this_ride.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = getArguments();
+                Ride rideToEdit = (Ride) bundle.getSerializable("ride");
 
-
+//                Intent intent = new Intent(getActivity(), EditRide.class);
+//                startActivityForResult(intent, 2);
+                ((MainActivity) getActivity()).onEditPressed(rideToEdit);
+            }
+        });
 
         return builder
                     .setView(view)

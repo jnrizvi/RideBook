@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     ListView ridesListView;
     ArrayAdapter<Ride> rideAdapter;
     ArrayList<Ride> rideDataList;
+    Ride carrier;
+    int editPosition;
 
     boolean deletePressed;
     public boolean expanded;
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
 
                 ridesListView.setSelection(i);
                 System.out.println(rideAdapter.getItem(i).getRideTime());
-
+                editPosition = i;
                 new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
 //                new ModifyRideFragment().passList(rideDataList).show(getSupportFragmentManager(), "MODIFY_LIST");
                 rideAdapter.notifyDataSetChanged();
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
-                startActivityForResult(intent, 1);
+                startActivityForResult(intent, 2);
             }
         });
 
@@ -109,9 +111,20 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
                 rideAdapter.add(newRide);
             }
         }
+        else if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                Ride editedRide = (Ride) data.getSerializableExtra("newRide");
+                System.out.println(editedRide.getRideTime());
+                rideAdapter.remove(rideAdapter.getItem(editPosition));
+                rideAdapter.insert(editedRide, editPosition);
+                rideAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
-    public void onConfirmAdd(Ride newRide) {
-        rideAdapter.add(newRide);
+    public void onEditPressed(Ride rideToEdit) {
+        Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
+        startActivityForResult(intent, 2);
+//        carrier = rideToEdit;
     }
 }

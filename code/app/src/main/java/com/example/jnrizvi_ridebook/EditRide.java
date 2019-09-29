@@ -1,18 +1,14 @@
 package com.example.jnrizvi_ridebook;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class AddNewRide extends AppCompatActivity {
-
+public class EditRide extends AppCompatActivity {
     String date;
     String distance;
     String time;
@@ -25,6 +21,8 @@ public class AddNewRide extends AppCompatActivity {
     EditText enter_avg_speed;
     EditText enter_cadence;
     EditText enter_comment;
+    Button confirm_edit;
+    Button cancel_edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +37,14 @@ public class AddNewRide extends AppCompatActivity {
         enter_cadence = (EditText) findViewById(R.id.cadence_field);
         enter_comment = (EditText) findViewById(R.id.comment_field);
 
-        Button confirm_add = (Button) findViewById(R.id.confirm_button);
-        Button cancel_add = (Button) findViewById(R.id.cancel_button);
 
-        confirm_add.setOnClickListener(new View.OnClickListener() {
+
+
+    }
+    public void onEditPressed(final Ride rideToEdit) {
+        confirm_edit = (Button) findViewById(R.id.confirm_button);
+        cancel_edit = (Button) findViewById(R.id.cancel_button);
+        confirm_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 date = enter_date.getText().toString();
@@ -53,24 +55,29 @@ public class AddNewRide extends AppCompatActivity {
                 cadence = enter_cadence.getText().toString();
                 comment = enter_comment.getText().toString();
 
-//                if (requestCode)
-                Ride newRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
+
+//                Ride editedRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
+                rideToEdit.setRideDate(date);
+                rideToEdit.setRideTime(time);
+                rideToEdit.setDistance(distance);
+                rideToEdit.setAvg_speed(avg_speed);
+                rideToEdit.setAvg_cadence(cadence);
+                rideToEdit.setRideComment(comment);
+
                 Intent returnIntent = getIntent();
-                returnIntent.putExtra("newRide", newRide);
+                returnIntent.putExtra("editedRide", rideToEdit);
                 setResult(RESULT_OK, returnIntent);
 
                 finish();
             }
         });
 
-        cancel_add.setOnClickListener(new View.OnClickListener() {
+        cancel_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-
 
     }
 }
