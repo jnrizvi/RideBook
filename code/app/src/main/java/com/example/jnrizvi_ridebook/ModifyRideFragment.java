@@ -70,9 +70,8 @@ public class ModifyRideFragment extends DialogFragment {
                 Bundle bundle = getArguments();
                 Ride rideToEdit = (Ride) bundle.getSerializable("ride");
 
-//                Intent intent = new Intent(getActivity(), EditRide.class);
-//                startActivityForResult(intent, 2);
                 ((MainActivity) getActivity()).onEditPressed(rideToEdit);
+
             }
         });
 

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     ListView ridesListView;
     ArrayAdapter<Ride> rideAdapter;
     ArrayList<Ride> rideDataList;
-    Ride carrier;
+
     int editPosition;
 
     boolean deletePressed;
@@ -115,8 +115,16 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             if (resultCode == RESULT_OK) {
                 Ride editedRide = (Ride) data.getSerializableExtra("newRide");
                 System.out.println(editedRide.getRideTime());
-                rideAdapter.remove(rideAdapter.getItem(editPosition));
-                rideAdapter.insert(editedRide, editPosition);
+
+                rideAdapter.getItem(editPosition).setRideDate(editedRide.getRideDate());
+                rideAdapter.getItem(editPosition).setRideTime(editedRide.getRideTime());
+                rideAdapter.getItem(editPosition).setDistance(editedRide.getDistance());
+                rideAdapter.getItem(editPosition).setAvg_speed(editedRide.getAvg_speed());
+                rideAdapter.getItem(editPosition).setAvg_cadence(editedRide.getAvg_cadence());
+                rideAdapter.getItem(editPosition).setRideComment(editedRide.getRideComment());
+
+//                rideAdapter.remove(rideAdapter.getItem(editPosition));
+//                rideAdapter.insert(editedRide, editPosition);
                 rideAdapter.notifyDataSetChanged();
             }
         }
@@ -125,6 +133,5 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     public void onEditPressed(Ride rideToEdit) {
         Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
         startActivityForResult(intent, 2);
-//        carrier = rideToEdit;
     }
 }
