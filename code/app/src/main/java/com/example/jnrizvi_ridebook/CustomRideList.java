@@ -13,7 +13,8 @@ import androidx.annotation.Nullable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
+
+public class CustomRideList extends ArrayAdapter<Ride> {
     private ArrayList<Ride> rides;
     private Context context;
 

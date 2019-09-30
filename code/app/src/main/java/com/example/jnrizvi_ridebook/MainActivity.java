@@ -33,15 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
         ridesListView = (ListView) findViewById(R.id.ride_list);
         seeTotal_button = findViewById(R.id.see_total);
-        String []distances_test = {"3.213", "2.198", "6.231", "5.234", "4.992", "1.782"};
-        String []dates_test = {"2019-09-12", "2019-09-7", "2019-07-23", "2019-07-02", "2019-05-19", "2019-05-13"};
-        String []times_test = {"07:47", "09:03", "08:33", "08:57", "07:18", "08:15"};
+//        String []distances_test = {"3.213", "2.198", "6.231", "5.234", "4.992", "1.782"};
+//        String []dates_test = {"2019-09-12", "2019-09-7", "2019-07-23", "2019-07-02", "2019-05-19", "2019-05-13"};
+//        String []times_test = {"07:47", "09:03", "08:33", "08:57", "07:18", "08:15"};
 
         rideDataList = new ArrayList<>();
 
-        for (int i = 0; i< distances_test.length; i++) {
-            rideDataList.add((new Ride(dates_test[i], times_test[i], distances_test[i], false)));
-        }
+//        for (int i = 0; i< distances_test.length; i++) {
+//            rideDataList.add((new Ride(dates_test[i], times_test[i], distances_test[i], false)));
+//        }
 
         rideAdapter = new CustomRideList(this, rideDataList);
 

@@ -13,12 +13,12 @@ public class Ride implements Serializable {
     private boolean expanded;
 
     // shorter constructor for testing purposes
-    public Ride (String date, String time, String distance, boolean expanded) {
-        this.date = date;
-        this.time = time;
-        this.distance = distance;
-        this.expanded = expanded;
-    }
+//    public Ride (String date, String time, String distance, boolean expanded) {
+//        this.date = date;
+//        this.time = time;
+//        this.distance = distance;
+//        this.expanded = expanded;
+//    }
 
     public Ride (String date, String time, String distance, String avg_speed, String avg_cadence, String comment, boolean expanded) {
         this.date = date;
