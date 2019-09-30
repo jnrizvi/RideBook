@@ -17,9 +17,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ListView ridesListView;
-    ArrayAdapter<Ride> rideAdapter;
-    ArrayList<Ride> rideDataList;
+    private ListView ridesListView;
+    private ArrayAdapter<Ride> rideAdapter;
+    private ArrayList<Ride> rideDataList;
 
     int editPosition;
     TextView seeTotal_button;
