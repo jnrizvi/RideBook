@@ -63,12 +63,6 @@ public class EditRide extends AppCompatActivity {
 
 
                 Ride editedRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
-//                rideToEdit.setRideDate(date);
-//                rideToEdit.setRideTime(time);
-//                rideToEdit.setDistance(distance);
-//                rideToEdit.setAvg_speed(avg_speed);
-//                rideToEdit.setAvg_cadence(cadence);
-//                rideToEdit.setRideComment(comment);
 
                 Intent returnIntent = getIntent();
                 returnIntent.putExtra("editedRide", editedRide);
