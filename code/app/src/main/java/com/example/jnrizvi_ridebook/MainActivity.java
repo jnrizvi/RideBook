@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int i, final long l) {
 
                 ridesListView.setSelection(i);
-                System.out.println(rideAdapter.getItem(i).getRideTime());
+//                System.out.println(rideAdapter.getItem(i).getRideTime());
                 editPosition = i;
 //                onPause();
                 new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
         super.onResume();
 
         total_distance = 0;
+//        System.out.println(rideAdapter.getCount());
         for (int j = 0; j < rideAdapter.getCount(); j++) {
             total_distance += Float.parseFloat(rideAdapter.getItem(j).getDistance());
         }
@@ -122,8 +123,8 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
         }
         else if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
-                Ride editedRide = (Ride) data.getSerializableExtra("newRide");
-                System.out.println(editedRide.getRideTime());
+                Ride editedRide = (Ride) data.getSerializableExtra("editedRide");
+//                System.out.println(editedRide.getRideTime());
 
                 rideAdapter.getItem(editPosition).setRideDate(editedRide.getRideDate());
                 rideAdapter.getItem(editPosition).setRideTime(editedRide.getRideTime());
@@ -140,7 +141,9 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     }
 
     public void onEditPressed(Ride rideToEdit) {
-        Intent intent = new Intent(getApplicationContext(), AddNewRide.class);
+        Intent intent = new Intent(getApplicationContext(), EditRide.class);
+        intent.putExtra("rideToEdit", rideToEdit);
         startActivityForResult(intent, 2);
+        // need to be able to send the Ride to this Activity!!!
     }
 }

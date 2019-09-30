@@ -23,6 +23,7 @@ public class EditRide extends AppCompatActivity {
     EditText enter_comment;
     Button confirm_edit;
     Button cancel_edit;
+    Ride rideToEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,18 @@ public class EditRide extends AppCompatActivity {
         enter_cadence = (EditText) findViewById(R.id.cadence_field);
         enter_comment = (EditText) findViewById(R.id.comment_field);
 
-
-
-
-    }
-    public void onEditPressed(final Ride rideToEdit) {
         confirm_edit = (Button) findViewById(R.id.confirm_button);
         cancel_edit = (Button) findViewById(R.id.cancel_button);
+
+        rideToEdit = (Ride) getIntent().getSerializableExtra("rideToEdit");
+
+        enter_date.setText(rideToEdit.getRideDate());
+        enter_distance.setText(rideToEdit.getDistance());
+        enter_time.setText(rideToEdit.getRideTime());
+        enter_avg_speed.setText(rideToEdit.getAvg_speed());
+        enter_cadence.setText(rideToEdit.getAvg_cadence());
+        enter_comment.setText(rideToEdit.getRideComment());
+
         confirm_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,13 +62,13 @@ public class EditRide extends AppCompatActivity {
                 comment = enter_comment.getText().toString();
 
 
-//                Ride editedRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
-                rideToEdit.setRideDate(date);
-                rideToEdit.setRideTime(time);
-                rideToEdit.setDistance(distance);
-                rideToEdit.setAvg_speed(avg_speed);
-                rideToEdit.setAvg_cadence(cadence);
-                rideToEdit.setRideComment(comment);
+                Ride editedRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
+//                rideToEdit.setRideDate(date);
+//                rideToEdit.setRideTime(time);
+//                rideToEdit.setDistance(distance);
+//                rideToEdit.setAvg_speed(avg_speed);
+//                rideToEdit.setAvg_cadence(cadence);
+//                rideToEdit.setRideComment(comment);
 
                 Intent returnIntent = getIntent();
                 returnIntent.putExtra("editedRide", rideToEdit);
@@ -79,5 +85,7 @@ public class EditRide extends AppCompatActivity {
             }
         });
 
+
     }
+
 }

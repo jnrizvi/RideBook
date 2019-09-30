@@ -42,6 +42,9 @@ public class AddNewRide extends AppCompatActivity {
         Button confirm_add = (Button) findViewById(R.id.confirm_button);
         Button cancel_add = (Button) findViewById(R.id.cancel_button);
 
+//        Ride rideToEdit = (Ride) getIntent().getSerializableExtra("rideToEdit");
+//        enter_date.setText(rideToEdit.getRideDate());
+
         confirm_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

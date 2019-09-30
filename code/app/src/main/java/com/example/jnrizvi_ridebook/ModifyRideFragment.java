@@ -35,7 +35,7 @@ public class ModifyRideFragment extends DialogFragment {
     static ModifyRideFragment passList(ArrayList<Ride> list) {
         Bundle args = new Bundle();
         args.putSerializable("list", list);
-        System.out.println(list);
+//        System.out.println(list);
         ModifyRideFragment fragment = new ModifyRideFragment();
         fragment.setArguments(args);
         return fragment;
