@@ -20,22 +20,12 @@ import java.util.ArrayList;
 
 public class ModifyRideFragment extends DialogFragment {
     private Button edit_this_ride;
-    private Button delete;
 
 
     static ModifyRideFragment newInstance(Ride ride) {
         Bundle args = new Bundle();
         args.putSerializable("ride", ride);
 
-        ModifyRideFragment fragment = new ModifyRideFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    static ModifyRideFragment passList(ArrayList<Ride> list) {
-        Bundle args = new Bundle();
-        args.putSerializable("list", list);
-//        System.out.println(list);
         ModifyRideFragment fragment = new ModifyRideFragment();
         fragment.setArguments(args);
         return fragment;

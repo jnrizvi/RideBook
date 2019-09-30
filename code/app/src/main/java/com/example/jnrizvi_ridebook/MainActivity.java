@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 ridesListView.setSelection(i);
 //                System.out.println(rideAdapter.getItem(i).getRideTime());
                 editPosition = i;
-//                onPause();
+
                 new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
-//                new ModifyRideFragment().passList(rideDataList).show(getSupportFragmentManager(), "MODIFY_LIST");
+
                 rideAdapter.notifyDataSetChanged();
 
 
