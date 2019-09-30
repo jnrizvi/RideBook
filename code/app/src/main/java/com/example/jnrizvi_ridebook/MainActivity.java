@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements ModifyRideFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity {
     ListView ridesListView;
     ArrayAdapter<Ride> rideAdapter;
     ArrayList<Ride> rideDataList;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     int editPosition;
     TextView seeTotal_button;
     float total_distance = 0;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,11 +101,6 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     }
 
 
-    //this one is redundant
-    @Override
-    public void onOkPressed(Ride newRide) {
-        rideAdapter.add(newRide);
-    }
 
     public void onDelete(Ride ride) {
         rideAdapter.remove(ride);

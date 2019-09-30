@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ModifyRideFragment extends DialogFragment {
     private Button edit_this_ride;
     private Button delete;
-    private OnFragmentInteractionListener listener;
+
 
     static ModifyRideFragment newInstance(Ride ride) {
         Bundle args = new Bundle();
@@ -41,20 +41,7 @@ public class ModifyRideFragment extends DialogFragment {
         return fragment;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onOkPressed(Ride newRide);
-    }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener){
-            listener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
     @NonNull
     @Override
@@ -90,7 +77,5 @@ public class ModifyRideFragment extends DialogFragment {
                         }
                     })
                     .create();
-
-
     }
 }
