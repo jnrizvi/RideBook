@@ -71,6 +71,7 @@ public class ModifyRideFragment extends DialogFragment {
                 Ride rideToEdit = (Ride) bundle.getSerializable("ride");
 
                 ((MainActivity) getActivity()).onEditPressed(rideToEdit);
+//                getActivity().onBackPressed();
 
             }
         });
@@ -85,6 +86,7 @@ public class ModifyRideFragment extends DialogFragment {
                             Bundle bundle = getArguments();
                             Ride rideToDelete = (Ride) bundle.getSerializable("ride");
                             ((MainActivity) getActivity()).onDelete(rideToDelete);
+                            ((MainActivity) getActivity()).updateTotalDistance();
                         }
                     })
                     .create();

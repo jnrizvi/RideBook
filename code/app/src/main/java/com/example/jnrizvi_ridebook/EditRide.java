@@ -71,7 +71,7 @@ public class EditRide extends AppCompatActivity {
 //                rideToEdit.setRideComment(comment);
 
                 Intent returnIntent = getIntent();
-                returnIntent.putExtra("editedRide", rideToEdit);
+                returnIntent.putExtra("editedRide", editedRide);
                 setResult(RESULT_OK, returnIntent);
 
                 finish();

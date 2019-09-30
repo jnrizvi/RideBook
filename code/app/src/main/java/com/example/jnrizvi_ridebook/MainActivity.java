@@ -69,11 +69,9 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
 //                onPause();
                 new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
 //                new ModifyRideFragment().passList(rideDataList).show(getSupportFragmentManager(), "MODIFY_LIST");
-
-
-
-
                 rideAdapter.notifyDataSetChanged();
+
+
                 return true;
             }
         });
@@ -98,13 +96,15 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
         for (int j = 0; j < rideAdapter.getCount(); j++) {
             total_distance += Float.parseFloat(rideAdapter.getItem(j).getDistance());
         }
+        total_distance= (float) Math.floor(total_distance*100) / 100;
         seeTotal_button.setText("Total Distance: " + Float.toString(total_distance)+" km");
     }
+
+
     //this one is redundant
     @Override
     public void onOkPressed(Ride newRide) {
         rideAdapter.add(newRide);
-        // Toast here as well
     }
 
     public void onDelete(Ride ride) {
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             if(resultCode == RESULT_OK){
                 Ride newRide = (Ride) data.getSerializableExtra("newRide");
                 rideAdapter.add(newRide);
+                // add a Toast if you have time
             }
         }
         else if (requestCode == 2) {
@@ -133,8 +134,6 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
                 rideAdapter.getItem(editPosition).setAvg_cadence(editedRide.getAvg_cadence());
                 rideAdapter.getItem(editPosition).setRideComment(editedRide.getRideComment());
 
-//                rideAdapter.remove(rideAdapter.getItem(editPosition));
-//                rideAdapter.insert(editedRide, editPosition);
                 rideAdapter.notifyDataSetChanged();
             }
         }
@@ -144,6 +143,14 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
         Intent intent = new Intent(getApplicationContext(), EditRide.class);
         intent.putExtra("rideToEdit", rideToEdit);
         startActivityForResult(intent, 2);
-        // need to be able to send the Ride to this Activity!!!
+    }
+
+    public void updateTotalDistance() {
+        total_distance = 0;
+        for (int j = 0; j < rideAdapter.getCount(); j++) {
+            total_distance += Float.parseFloat(rideAdapter.getItem(j).getDistance());
+        }
+        total_distance= (float) Math.floor(total_distance*100) / 100;
+        seeTotal_button.setText("Total Distance: " + Float.toString(total_distance)+" km");
     }
 }
