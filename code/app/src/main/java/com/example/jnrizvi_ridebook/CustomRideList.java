@@ -16,12 +16,12 @@ import java.util.ArrayList;
 public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
     private ArrayList<Ride> rides;
     private Context context;
-    private boolean expanded;
-    public CustomRideList(Context context, ArrayList<Ride> rides, boolean expanded) {
+
+    public CustomRideList(Context context, ArrayList<Ride> rides) {
         super(context, 0, rides);
         this.context = context;
         this.rides = rides;
-        this.expanded = expanded;
+
     }
 
     @NonNull
@@ -30,8 +30,6 @@ public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
 //        return super.getView(position, convertView, parent);
         View view = convertView;
         LayoutInflater inflator = ((android.app.Activity) this.context).getLayoutInflater();
-
-
 
             if (rides.get(position).getExpandStatus() == true) {
 //                view = LayoutInflater.from(context).inflate(R.layout.expanded_list, parent, false);
@@ -72,12 +70,7 @@ public class CustomRideList extends ArrayAdapter<Ride> implements Serializable {
                 date_view.setText(ride.getRideDate());
             }
 
-
-
-
-
-
         return view;
     }
-// getView allows you to set the values for the views inside a ListView object
+
 }

@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
     int editPosition;
     TextView seeTotal_button;
     float total_distance = 0;
-    boolean deletePressed;
-    public boolean expanded;
+    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
             rideDataList.add((new Ride(dates_test[i], times_test[i], distances_test[i], false)));
         }
 
-        rideAdapter = new CustomRideList(this, rideDataList, false);
+        rideAdapter = new CustomRideList(this, rideDataList);
 
         ridesListView.setAdapter(rideAdapter);
 

@@ -14,3 +14,4 @@ https://www.codota.com/code/java/methods/android.content.Intent/getSerializableE
 https://stackoverflow.com/questions/7747469/how-can-i-truncate-a-double-to-only-two-decimal-places-in-java
 https://stackoverflow.com/questions/2736389/how-to-pass-an-object-from-one-activity-to-another-on-android
 https://stackoverflow.com/questions/7321094/how-to-add-text-to-editext
+https://stackoverflow.com/questions/24943311/one-line-toasting-error-in-java-incompatible-types
