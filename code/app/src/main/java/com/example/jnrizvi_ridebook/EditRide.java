@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +26,7 @@ public class EditRide extends AppCompatActivity {
     Button confirm_edit;
     Button cancel_edit;
     Ride rideToEdit;
+    boolean valid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +64,25 @@ public class EditRide extends AppCompatActivity {
                 cadence = enter_cadence.getText().toString();
                 comment = enter_comment.getText().toString();
 
+                if (date.isEmpty() || distance.isEmpty() || time.isEmpty() || avg_speed.isEmpty() || cadence.isEmpty()) {
+//                    System.out.println("Only the comment field may be empty");
+                    Toast error = Toast.makeText(getApplicationContext(), "Only the comment field may be empty", Toast.LENGTH_SHORT);
+                    error.show();
+                    valid = false;
+                }
+                else {
+                    valid = true;
+                }
 
-                Ride editedRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
+                if (valid == true){
+                    Ride editedRide = new Ride(date, time, distance, avg_speed, cadence, comment, false);
 
-                Intent returnIntent = getIntent();
-                returnIntent.putExtra("editedRide", editedRide);
-                setResult(RESULT_OK, returnIntent);
+                    Intent returnIntent = getIntent();
+                    returnIntent.putExtra("editedRide", editedRide);
+                    setResult(RESULT_OK, returnIntent);
 
-                finish();
+                    finish();
+                }
             }
         });
 
