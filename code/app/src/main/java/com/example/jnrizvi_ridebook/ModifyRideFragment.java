@@ -71,7 +71,7 @@ public class ModifyRideFragment extends DialogFragment {
                 Ride rideToEdit = (Ride) bundle.getSerializable("ride");
 
                 ((MainActivity) getActivity()).onEditPressed(rideToEdit);
-//                getActivity().onBackPressed();
+                dismiss();
 
             }
         });
