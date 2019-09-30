@@ -58,6 +58,7 @@
         android:layout_marginLeft="8dp"
         android:text="Total Distance"
         android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ride_list"
         app:layout_constraintEnd_toStartOf="@+id/add_new"
         app:layout_constraintStart_toStartOf="parent"

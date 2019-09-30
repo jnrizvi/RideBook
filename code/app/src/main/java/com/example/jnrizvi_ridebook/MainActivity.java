@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
         setContentView(R.layout.activity_main);
 
         ridesListView = (ListView) findViewById(R.id.ride_list);
-
+        seeTotal_button = findViewById(R.id.see_total);
         String []distances_test = {"3.213", "2.198", "6.231", "5.234", "4.992", "1.782"};
         String []dates_test = {"2019-09-12", "2019-09-7", "2019-07-23", "2019-07-02", "2019-05-19", "2019-05-13"};
         String []times_test = {"07:47", "09:03", "08:33", "08:57", "07:18", "08:15"};
@@ -66,15 +66,12 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
                 ridesListView.setSelection(i);
                 System.out.println(rideAdapter.getItem(i).getRideTime());
                 editPosition = i;
+//                onPause();
                 new ModifyRideFragment().newInstance(rideAdapter.getItem(i)).show(getSupportFragmentManager(), "MODIFY_CITY");
 //                new ModifyRideFragment().passList(rideDataList).show(getSupportFragmentManager(), "MODIFY_LIST");
 
-                seeTotal_button = findViewById(R.id.see_total);
-                total_distance = 0;
-                for (int j = 0; j < rideAdapter.getCount(); j++) {
-                    total_distance += Float.parseFloat(rideAdapter.getItem(j).getDistance());
-                }
-                seeTotal_button.setText("Total Distance: " + Float.toString(total_distance)+" km");
+
+
 
                 rideAdapter.notifyDataSetChanged();
                 return true;
@@ -90,13 +87,18 @@ public class MainActivity extends AppCompatActivity implements ModifyRideFragmen
                 startActivityForResult(intent, 1);
             }
         });
-
-
-
-
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        total_distance = 0;
+        for (int j = 0; j < rideAdapter.getCount(); j++) {
+            total_distance += Float.parseFloat(rideAdapter.getItem(j).getDistance());
+        }
+        seeTotal_button.setText("Total Distance: " + Float.toString(total_distance)+" km");
+    }
     //this one is redundant
     @Override
     public void onOkPressed(Ride newRide) {
